@@ -48,4 +48,8 @@ export default {
      flex-direction: column;
  }
 
+ .modal-body {
+     text-align: justify;
+ }
+
 </style>
