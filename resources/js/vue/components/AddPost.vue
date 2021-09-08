@@ -29,12 +29,13 @@ export default {
     },
     methods: {
         addPost() {
-            this.$emit('changeShowLoading');
 
             if(this.post.author == '') {
                 return;
             }
 
+            this.$emit('changeShowLoading');
+            
             axios.post('api/posts', {
                 post: this.post
             })
