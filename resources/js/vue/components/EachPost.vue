@@ -34,9 +34,9 @@
 export default {
     props: ['post'],
     methods: {
-        removePost() {
+        async removePost() {
             this.$emit('changeShowLoading');
-            axios.delete(`/api/posts/${this.post.id}`);
+            await axios.delete(`/api/posts/${this.post.id}`);
             this.$emit('reloadlist');
         }
     }
