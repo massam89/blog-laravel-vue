@@ -29,6 +29,8 @@ export default {
     },
     methods: {
         addPost() {
+            this.$emit('changeShowLoading');
+
             if(this.post.author == '') {
                 return;
             }
@@ -42,7 +44,7 @@ export default {
                     this.post.author = '';
                     this.post.text = '';
 
-                    this.$emit('reloadlist')
+                    this.$emit('reloadlist');
                 }
             })
             .catch(err => console.log(err))

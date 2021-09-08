@@ -19,8 +19,9 @@
             <div class="modal-body">
                 {{ post.text }}
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <div class="modal-footer mx-auto">
+                <button type="button" class="btn btn-secondary me-3" data-bs-dismiss="modal">Close</button>
+                <button @click="removePost()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
             </div>
             </div>
         </div>
@@ -31,7 +32,14 @@
 <script>
 
 export default {
-    props: ['post']
+    props: ['post'],
+    methods: {
+        removePost() {
+            this.$emit('changeShowLoading');
+            axios.delete(`/api/posts/${this.post.id}`);
+            this.$emit('reloadlist');
+        }
+    }
 }
 </script>
 
